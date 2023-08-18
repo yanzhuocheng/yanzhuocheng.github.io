@@ -9,7 +9,7 @@ body {
   background-color: #f5f5f5;
 }
 
-.countdown-container {
+.dice-container {
   text-align: center;
   background-color: white;
   padding: 20px;
@@ -21,17 +21,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
 button {
   background-color: #007bff;
   color: white;
@@ -40,8 +29,14 @@ button {
   cursor: pointer;
 }
 
-#countdown {
+.dice {
+  font-size: 48px;
+  width: 80px;
+  height: 80px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
-  font-size: 24px;
-  font-weight: bold;
 }
