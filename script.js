@@ -1,23 +1,24 @@
-// 设置倒计时日期
-var countDownDate = new Date("Dec 31, 2023 23:59:59").getTime();
+document.addEventListener("DOMContentLoaded", function() {
+  const countdownDateInput = document.getElementById("countdownDate");
+  const startButton = document.getElementById("startButton");
+  const countdownDisplay = document.getElementById("countdown");
 
-var countdownFunction = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("days").innerHTML = days;
-    document.getElementById("hours").innerHTML = hours;
-    document.getElementById("minutes").innerHTML = minutes;
-    document.getElementById("seconds").innerHTML = seconds;
-
-    // 当倒计时结束时，显示一条消息
-    if (distance < 0) {
-        clearInterval(countdownFunction);
-        document.getElementById("countdown").innerHTML = "倒计时已结束!";
-    }
-}, 1000);
+  startButton.addEventListener("click", function() {
+    const countdownDate = new Date(countdownDateInput.value).getTime();
+    const interval = setInterval(function() {
+      const now = new Date().getTime();
+      const timeRemaining = countdownDate - now;
+      
+      if (timeRemaining <= 0) {
+        clearInterval(interval);
+        countdownDisplay.textContent = "Countdown expired!";
+      } else {
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        countdownDisplay.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }, 1000);
+  });
+});
